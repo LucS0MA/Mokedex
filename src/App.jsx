@@ -14,11 +14,23 @@ const pokemonList = [
 ];
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [pokemonIndex, setPokemonIndex] = useState(0);
+
+  const PrevClick = () => {
+    setPokemonIndex(pokemonIndex - 1);
+  };
+
+  const NextClick = () => {
+    setPokemonIndex(pokemonIndex + 1);
+  };
 
   return (
     <div>
-      <PokemonCard pokemon={pokemonList[0]} />
+      <PokemonCard pokemon={pokemonList[pokemonIndex]} />
+      {pokemonIndex > 0 && <button onClick={PrevClick}>Précédent</button>}
+      {pokemonIndex < pokemonList.length - 1 && (
+        <button onClick={NextClick}>Suivant</button>
+      )}
     </div>
   );
 }
