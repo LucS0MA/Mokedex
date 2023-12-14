@@ -1,13 +1,13 @@
 const NavBar = (props) => {
   console.log(props);
+
   return (
     <div>
-      {props.pokemonIndex > 0 && (
-        <button onClick={props.prevClick}>Précédent</button>
-      )}
-      {props.pokemonIndex < props.pokemonList.length - 1 && (
-        <button onClick={props.nextClick}>Suivant</button>
-      )}
+      {props.pokemonList.map((poke, index) => (
+        <button key={index} onClick={() => props.setPokemonIndex(index)}>
+          {poke.name}
+        </button>
+      ))}
     </div>
   );
 };
